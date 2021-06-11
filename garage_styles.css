@@ -1,0 +1,1216 @@
+body {
+    overflow: hidden;
+}
+
+:root {
+    --highlight-element: rgba(22, 22, 22, 0.678);
+    --larry-body-clothes: rgb(39, 22, 10);
+    --larry-head-mustache: linear-gradient(to right, rgb(73, 73, 73), rgb(194, 194, 194));
+    --larry-eye-glasses: linear-gradient(-45deg,  rgb(170, 205, 187), rgb(63, 97, 126));
+    --larry-arms-color: linear-gradient(to top, rgb(53, 53, 53), rgb(110, 110, 110));
+    --larry-hands-color: rgb(12, 12, 12);
+    --dialogue-box-color: rgb(19, 18, 18);
+    --walls-color: radial-gradient(rgb(31, 35, 56), rgb(16, 19, 37));
+    --floor-and-roof-color: radial-gradient(rgb(185, 184, 184), rgb(121, 118, 118));
+    --mecha-skeleton: rgb(27, 25, 22);
+    --mecha-color: linear-gradient(-45deg, rgb(172, 144, 108), rgb(185, 157, 118), rgb(189, 161, 135));
+}
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+    box-sizing: border-box;
+}
+
+/* 1: Estilos globales - modal */
+.play_modal {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--mecha-color);
+    z-index: 10000;
+}
+
+.play_modal__play_button {
+    width: 35%;
+    height: 20%;
+    border: none;
+    border-radius: 20px 4px;
+    background: rgb(24, 22, 20);
+    color: rgb(255, 255, 255);
+    box-shadow: 3px 3px 10px rgb(12, 12, 12);
+    font-weight: 900;
+    transition: background .4s ease-in-out, color .4s ease-in-out;
+}
+
+.play_modal__play_button:hover {
+    color: rgb(48, 42, 36);
+    background: rgb(255, 255, 255);
+}
+
+.device_orientation_advice {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 6000;
+    text-align: center;
+    background: rgb(211, 216, 216);
+    color: rgb(175, 175, 175);
+    font-weight: bolder;
+}
+
+.fa-mobile {
+    transform: rotateZ(90deg);
+}
+
+.device_orientation_advice__icon {
+    width: 100%;
+    height: 50%;
+    font-size: 7rem;
+    transform: translateY(calc(100% - 8rem));
+}
+
+.device_orientation_advice__legend {
+    margin: 0 1rem;
+}
+
+/* 2: Estilos globales - Larry & cinemáticas */
+    /* Contenedor cinemáticas */
+.introduction_container {
+    position: relative;
+    /* display: none; */
+    z-index: 2500;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.introduction_container__skip_button {
+    align-self: flex-end;
+    border: none;
+    border-radius: 2.1px;
+    height: 3rem;
+    width: 7.4rem;
+    margin: 8px;
+    background: rgb(19, 18, 18);
+    color: rgb(255, 255, 255);
+    box-shadow: 4px 3.2px 10px rgb(134, 131, 131);
+    font-size: 1.3rem;
+    transition: 
+        background
+        .3s
+        ease-out,
+        color
+        .3s
+        ease-out
+    ;
+}
+
+.introduction_container__skip_button:hover {
+    color:rgb(19, 18, 18);
+    background: rgb(255, 255, 255);
+}
+
+    /* Larry */
+.l3_17 {
+    position: absolute;
+    top: 7rem;
+    left: calc(90vw - 8.5rem);
+    transform: rotateZ(-24deg);
+    min-width: 10.5rem;
+    min-height: 14.8rem;
+    will-change: transform;
+    animation: 
+        floating
+        .8s
+        ease-in-out
+        alternate
+        infinite
+    ;
+}
+
+@keyframes floating {
+    to {
+        transform: translateY(-7px) rotateZ(-24deg);
+    }
+}
+
+.l3_17__head {
+    width: 60%;
+    height: 5.2rem;
+    margin: auto;
+    background: radial-gradient(rgb(56, 0, 0), rgb(145, 0, 0));
+}
+
+.l3_17__head__glasses {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transform: translateY(70%);
+    width: 100%;
+    height: 1.7rem;
+    background: rgb(39, 13, 0);
+}
+
+.l3_17__head__glasses__eye {
+    border-radius: 50%;
+    height: 2.4rem;
+    width: 2.3rem;
+    background: rgb(58, 19, 0);
+}
+
+.l3_17__head__glasses__eye:first-child:before {
+    display: inline-block;
+    transform: translate(25%, 25%);
+    border-radius: 50%;
+    width: 70%;
+    height: 70%;
+    background: var(--larry-eye-glasses);
+    content: '';
+}
+
+.l3_17__head__glasses__eye:last-child::after {
+    display: inline-block;
+    transform: translate(25%, 25%);
+    border-radius: 50%;
+    width: 70%;
+    height: 70%;
+    background: var(--larry-eye-glasses);
+    content: '';
+}
+
+.l3_17__head__mustache {
+    width: 1rem;
+    height: 2rem;
+    transform:
+        translate(265%, 50%) 
+        rotateZ(90deg)
+    ;
+}
+
+.l3_17__head__mustache:before {
+    display: inline-block;
+    transform: translate(-.4rem, .9rem);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 100%;
+    width: 2rem;
+    height: 2.9rem;
+    background: var(--larry-head-mustache);
+    content: '';
+}
+
+.l3_17__head__mustache:after {
+    display: inline-block;
+    transform: translate(-.4rem, -4.8rem) rotateX(180deg);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 100%;
+    width: 2rem;
+    height: 2.9rem;
+    background: var(--larry-head-mustache);
+    content: '';
+}
+
+.l3_17__body {
+    width: 45%;
+    height: 10rem;
+    margin: auto;
+    background: rgb(53, 53, 53);
+}
+
+.l3_17__body__clothes {
+    display: flex;
+    justify-content: space-between;
+    padding: .3rem;
+    width: 60%;
+    height: 80%;
+    margin: auto;
+    transform: translateY(25%);
+    background: var(--larry-body-clothes);
+}
+
+.l3_17__body__clothes:before {
+    position: absolute;
+    display: inline-block;
+    /* transform: translateY(-2.49rem); */
+    top: -25%;
+    width: 20%;
+    height: 26%;
+    background: var(--larry-body-clothes);
+    content: '';
+}
+
+.l3_17__body__clothes:after {
+    position: absolute;
+    display: inline-block;
+    /* transform: translate(2.14rem, -2.49rem); */
+    top: -25%;
+    right: 10%;
+    width: 20%;
+    height: 26%;
+    background: var(--larry-body-clothes);
+    content: '';
+}
+
+.l3_17__body__clothes__buttons {
+    width: .3rem;
+    height: .3rem;
+    background: rgb(194, 194, 18);
+}
+
+.l3_17__arm_left {
+    position: absolute;
+    transform: 
+        translate(.19rem, -13.50rem) 
+        rotateZ(-45deg)
+    ;
+    height: 7rem;
+    width: 1.4rem;
+    background: var(--larry-arms-color);
+}
+
+.l3_17__arm_left:before {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border-bottom: .45rem solid var(--larry-hands-color);
+    border-left: .45rem solid var(--larry-hands-color);
+    border-right: .45rem solid var(--larry-hands-color);
+    transform: translate(-25%, -100%);
+    content: '';
+}
+
+.l3_17__arm_right {
+    position: absolute;
+    transform:
+        translate(8.81rem, -3.4rem)
+        rotateZ(45deg)
+    ;
+    height: 7rem;
+    width: 1.4rem;
+    background: var(--larry-arms-color)
+}
+
+.l3_17__arm_right:after {
+    display: inline-block;
+    transform: translate(-25%, -100%);
+    width: 2rem;
+    height: 2rem;
+    border-bottom: .45rem solid var(--larry-hands-color);
+    border-left: .45rem solid var(--larry-hands-color);
+    border-right: .45rem solid var(--larry-hands-color);
+    display: inline-block;
+    content: '';
+}
+
+.l3_17__hat {
+    position: absolute;
+    transform: translate(125%, -100%);
+    width: 3rem;
+    height: .9rem;
+    background: var(--larry-hands-color);
+}
+
+.l3_17__hat:before {
+    display: inline-block;
+    transform: translate(50%, -100%);
+    width: 1.5rem;
+    height: .9rem;
+    background: var(--larry-hands-color);
+    content: '';
+}
+
+.larry_dialogue_box {
+    position: absolute;
+    z-index: 1200;
+    overflow: auto;
+    min-width: 20rem;
+    max-width: 26rem;
+    height: 5rem;
+    padding: 15px;
+    border-radius: 5px;
+    top: -49%;
+    right: 40%;
+    background: var(--dialogue-box-color);
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+}
+
+.larry_dialogue_box__pointer {
+    position: absolute;
+    z-index: 1190;
+    top: -14%;
+    right: 67%;
+    border-top: 1rem solid var(--dialogue-box-color);
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
+}
+
+/* Garage - Main garage */
+    /* Garage pillars alignment and stylish */
+.garage {
+    position: absolute;
+    z-index: 2100;
+    top: -0vh;
+    width: 100vw;
+    height: 100vh;
+    transition: 
+        top .3s ease-in-out,
+        filter .2s linear
+    ;
+    filter: blur(10px)
+}
+
+.garage__background_element {
+    position: absolute;
+}
+
+.garage__background_element:first-child, .garage__background_element:nth-child(2) {
+    width: 100vw;
+    height: 10vh;
+    background: var(--floor-and-roof-color);
+}
+
+.garage__background_element:nth-child(2) {
+    top: 10vh;
+    background: var(--walls-color);
+}
+
+.garage__background_element:nth-child(3), .garage__background_element:nth-child(5) {
+    z-index: inherit;
+    top: 20vh;
+    width: 20vw;
+    height: 70vh;
+    background: var(--walls-color);
+}
+
+.garage__background_element:nth-child(4) {
+    top: 20vh;
+    left: calc(50vw / 2.5);
+    width: 60vw;
+    height: 57vh;
+}
+
+.image_alignment > img {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+    filter: hue-rotate(-45deg);
+}
+
+.garage__background_element:nth-child(5) {
+    left: 80vw;
+}
+
+.garage__background_element:last-child {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    align-items: center;
+    top: 77vh;
+    width: 100vw;
+    height: 23vh;
+    background: var(--floor-and-roof-color);
+}
+
+/* First garage pillar */
+.background_element__garage_lamp {
+    transform: translateY(-60%);
+    width: 25%;
+    height: 62.5%;
+    margin: auto;
+    clip-path: polygon(93% 0, 100% 32%, 100% 100%, 0 100%, 0 32%, 7% 0);
+    background: rgb(104, 106, 107);
+}
+
+.background_element__garage_lamp:after {
+    width: 80%;
+    height: 50%;
+    margin: auto;
+    transform: translateY(90%);
+    background: radial-gradient(rgb(241, 240, 233), rgb(224, 216, 171));
+    display: block;
+    content: '';
+}
+
+/* Second garage pillar - First element */
+.garage_door {
+    position: absolute;
+    /* display: none; */
+    z-index: 1180;
+    width: 60vw;
+    height: 63vh;
+    top: 10vh;
+    left: 20vw;
+    background: linear-gradient(
+        to top,
+        rgb(182, 182, 182),
+        rgb(178,  178, 178),
+        rgb(172, 172, 172),
+        rgb(168, 168, 168)
+    );
+    border-bottom: 6px dashed rgb(37, 37, 37);
+    will-change: transform;
+    transform-origin: top;
+    transition: 
+        transform
+        .5s
+        ease-in-out
+    ;
+}
+
+.garage_door:after {
+    display: block;
+    content: '';
+    width: .5rem;
+    height: .5rem;
+    margin: auto;
+    clip-path: polygon(0% 50%, 50% 0%, 100% 50%, 50% 100%);
+    transform: translateY(52vh);
+    background: rgb(54, 54, 54);
+}
+
+
+/* Third garage pillar */
+.garage__background_element:nth-child(3) {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+/* Third garage pillar - Window */
+.background_element__window {
+    display: grid;
+    grid-area: 2 / 2 / 6 / 8;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 6px;
+    background: rgb(31, 27, 24);
+}
+
+/* Window - Glasses */
+.window__glass {
+    background: url('../background_images/defaultBg.jpg') no-repeat 3% 19%;
+    filter: hue-rotate(-47deg);
+    box-shadow: 3px 1px 7px rgb(32, 32, 32) inset;
+    width: 87%;
+    height: 84%;
+}
+
+/* Third garage pillar - Table */
+.background_element__table {
+    position: inherit;
+    top: 69%;
+    width: 64%;
+    height: 42%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 11%, 94% 11%, 94% 100%, 86% 100%, 86% 11%, 0% 11%);
+    background: rgb(90, 68, 44);
+}
+
+    /* Table element */
+.tools_box {
+    position: inherit;
+    width: 40%;
+    height: 12%;
+    left: .9vw;
+    top: 39.84vh;
+    border-radius: 2px;
+    background: linear-gradient(to right,
+    rgb(145, 0, 0),
+    rgb(155, 24, 38),
+    rgb(197, 22, 22)
+    );
+}
+
+.tools_box::before {
+    display: inline-block;
+    height: 100%;
+    width: 43%;
+    background: rgba(0, 0, 0, 0.205);
+    content: '';
+}
+
+.tools_box::after {
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    transform: translate(-43.5%, 100%);
+    clip-path: polygon(0 43%, 53% 43%, 53% 1%, 58% 0, 58% 43%, 75% 43%, 75% 0, 81% 0, 81% 43%, 100% 43%, 100% 74%, 81% 74%, 81% 100%, 75% 100%, 75% 72%, 58% 71%, 58% 100%, 53% 100%, 53% 71%, 0% 74%);
+    background: rgba(29, 29, 29, 0.623);
+    content: '';
+}
+
+    /* Table element */
+.soda_alignment {
+    transform: translate(10vw, 40.6vh);
+    width: 59%;
+    height: 90%;
+}
+
+    /* Component */
+.soda_can {
+    text-align: center;
+    border-top: .2rem solid rgb(109, 109, 109);
+    border-bottom: .2rem solid rgb(109, 109, 109);
+    clip-path: polygon(0 4%, 4% 0, 96% 0, 100% 4%, 100% 95%, 95% 100%, 5% 100%, 0 95%);
+    background: rgb(224, 174, 116);
+}
+
+.fa-pagelines {
+    font-size: 80%;
+    color: rgb(139, 99, 62);
+    transform: translateY(-20%);
+}
+
+/* Fifth garage pillar - Garage switches */
+.background_element__switches {
+    display: inline-flex;
+    transform: translate(1vw, 20vh);
+    width: 20%;
+    height: 20%;
+    background: linear-gradient(45deg, rgb(233, 228, 221), rgb(214, 207, 187), rgb(223, 210, 190));
+}
+
+    /* Fifth garage pillar - garage switches - buttons */
+.switches__switch {
+    background: rgb(201, 186, 157);
+    border: none;
+    margin: auto;
+    width: 30%;
+    height: 78%;
+    transition: background .2s linear;
+}
+
+.switches__switch:hover {
+    background: rgb(139, 99, 62);
+}
+
+    /* Fifth garage pillar - batery charger */
+.battery_charger {
+    transform: translate(8vw, 1vh);
+    width: 13%;
+    height: 29%;
+    background: rgb(21, 21, 21);
+    border: 3px solid rgb(70, 70, 70);
+}
+
+    /* Fifth garage pillar - battery charger - pull */
+.battery_charger__pull {
+    width: 66%;
+    height: 50%;
+    margin: auto;
+    background: rgb(199, 199, 199);
+    transform-origin: bottom;
+    transition: 
+        transform
+        .2s
+        ease-in-out
+    ;
+}
+
+.battery_charger__pull::before {
+	display: inline-block;
+	content: '';
+	width: 160%;
+	height: 47%;
+	margin: auto;
+	transform: translate(-16.65%, -80%);
+	border-radius: 50%;
+	background: rgb(92, 27, 27);
+}
+
+/* Sixth garage pillar */
+    /* Sixth garage pillar - mecha disarmer */
+.mecha_disarmer {
+    grid-area: 2 / 3 / 5 / 4;
+    justify-self: end;
+    clip-path: polygon(0 33%, 15% 0, 85% 0, 100% 33%, 100% 100%, 0% 100%);
+    background: rgb(56, 56, 56);
+    border-bottom: 3px solid rgb(172, 144, 108);
+    height: 40%;
+    width: 90%;
+    z-index: 5010;
+}
+
+.pull_mecha_disarmer {
+	grid-area: 2 / 3 / 5 / 4;
+	width: 60%;
+	height: 15%;
+	justify-self: center;
+	transform: rotateZ(90deg) translate(-30%, -0%);
+	background: rgb(199, 199, 199);
+	z-index: 5000;
+	transition: transform .3s ease-in-out;
+}
+
+.pull_mecha_disarmer::before {
+	display: block;
+	content: '';
+	width: 30%;
+	height: 180%;
+	transform: translate(-80%, -25%);
+	border-radius: 50%;
+	background: rgb(92, 27, 27);
+}
+
+    /* Sixth garage pillar - mecha */
+.mecha {
+    z-index: 1200;
+    grid-area: auto / 5 / 2 / 7;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    height: 800%;
+    transform: translateY(-20%);
+    transform-origin: bottom;
+    will-change: transform;
+    animation: 
+        simple-floating
+        1.5s
+        ease-in-out
+        infinite
+        alternate
+    ;
+}
+
+
+/* Sixth garage pillar */
+    /* mecha */
+.mecha__helmet {
+    position: absolute;
+    width: 28%;
+    height: 28%;
+    left: 37%;
+    top: -4%;
+    background: var(--mecha-color);
+    clip-path: polygon(0% 16%, 18% 0%, 81% 0, 100% 22%, 100% 100%, 52% 100%, 52% 83%, 61% 73%, 61% 18%, 18% 18%, 18% 74%, 27% 83%, 27% 100%, 0% 100%);
+    z-index: 3000;
+    transition: top .1s ease-out;
+}
+
+.mecha__head {
+    position: absolute;
+    height: 20%;
+    width: 20%;
+    left: 40%;
+    background: var(--mecha-skeleton);
+}
+
+.mecha__head_eye {
+    width: 30%;
+    height: 60%;
+    transform: translateY(13%);
+    margin: auto;
+    background: rgb(219, 86, 86);
+}
+
+
+.mecha__head_eye:before {
+    display: block;
+    content: '';
+    position: absolute;
+    height: 120%;
+    width: 200%;
+    transform: translate(180%, 128%);
+    background: var(--mecha-skeleton);
+}
+
+.mecha__head_eye:after {
+    display: block;
+    content: '';
+    position: absolute;
+    height: 80%;
+    width: 300%;
+    background: var(--mecha-skeleton);
+    transform: translate(-32%, 800%);
+}
+
+.mecha__body_left_armor {
+    position: absolute;
+    width: 35%;
+    height: 66%;
+    top: 17%;
+    left: 14%;
+    background: var(--mecha-color);
+    clip-path: polygon(0 10%, 18% 0, 100% 0, 100% 25%, 70% 30%, 70% 50%, 100% 55%, 100% 100%, 45% 100%, 20% 86%, 20% 40%, 0% 29%);
+    z-index: 30000;
+    transition: left .1s ease-out;
+}
+
+.mecha__body_right_armor {
+    position: absolute;
+    width: 35%;
+    height: 66%;
+    top: 17%;
+    right: 14%;
+    background: var(--mecha-color);
+    clip-path: polygon(0 0, 80% 0, 100% 10%, 100% 28%, 80% 40%, 80% 86%, 55% 100%, 0 100%, 0 55%, 30% 50%, 30% 30%,0 25%);
+    z-index: 30000;
+    transition: right .1s ease-out;
+}
+
+.mecha__body_right_armor::after {
+    position: absolute;
+    top: 10%;
+    left: 80%;
+    display: inline-block;
+    content: '';
+    background: rgb(143, 143, 143);
+    width: 4%;
+    height: 4%;
+
+}
+
+.mecha__body {
+    position: absolute;
+    z-index: 3400;
+    height: 60%;
+    width: 40%;
+    left: 30%;
+    top: 20%;
+    background: var(--mecha-skeleton);
+}
+
+@keyframes simple-floating {
+    to {
+        transform: translateY(-30%);
+    }
+}
+
+.mecha__body_left_arm {
+    position: absolute;
+    height: 80%;
+    width: 35%;
+    top: 22%;
+    clip-path: polygon(0 0, 100% 0, 100% 82%, 50% 100%, 0 82%);
+    transform-origin: center 20%;
+    background: var(--mecha-color);
+    border: 1px solid rgb(48, 48, 48);
+    transition: 
+        transform
+        .4s
+        .1s
+        ease-in
+    ;
+}
+
+.disarmed_shield {
+    transform: rotateZ(-90deg);
+}
+
+.mecha__body_right_arm {
+    position: absolute;
+    height: 60%;
+    width: 20%;
+    left: 80%;
+    top: 20%;
+    background: var(--mecha-skeleton);
+}
+
+.right_arm__shoulder {
+    width: 130%;
+    height: 40%;
+    transform: translateY(-20%);
+    clip-path: polygon(66% 0, 100% 23%, 100% 100%, 0 100%, 0 0);
+    background: var(--mecha-color);
+    transition: transform .1s ease-out;
+}
+
+.right_arm__shoulder::after {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    left: 60%;
+    width: 8%;
+    height: 100%;
+    background: var(--mecha-skeleton);
+}
+
+.right_arm__shoulder::before {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    left: 48%;
+    width: 8%;
+    height: 100%;
+    background: var(--mecha-skeleton);
+}
+
+
+.right_arm__cannon {
+    position: absolute;
+    height: 50%;
+    width: 140%;
+    transform: translate(calc(-25% / 2), 40%);
+    margin: auto;
+    background: var(--mecha-color);
+    clip-path: polygon(15% 100%, 0 85%, 0% 19%, 10% 0, 90% 0, 100% 15%, 100% 85%, 85% 100%);
+}
+
+.right_arm__cannon_mouth {
+    width: 60%;
+    height: 30%;
+    transform: translateY(170%);
+    margin: auto;
+    background: rgb(161, 161, 161);
+    clip-path: polygon(15% 100%, 0 85%, 0% 19%, 10% 0, 90% 0, 100% 15%, 100% 85%, 85% 100%);
+}
+
+.right_arm__cannon_mouth::before {
+    position: absolute;
+    bottom: 0;
+    display: inline-block;
+    content: '';
+    width: 100%;
+    height: 20%;
+    background: rgb(88, 88, 88);
+}
+    /* mecha core */
+.mecha_core {
+    display: flex;
+    position: relative;
+    grid-area: 2 / 8 / 5 / 9;
+    padding: 4px;
+    z-index: 1200;
+    border-top-left-radius: 40%;
+    border-bottom-left-radius: 40%;
+    height: 80%;
+    width: 80%;
+    background: rgb(27, 25, 22);
+    border-right: 3px solid rgb(172, 144, 108);
+}
+
+.mecha_core:before {
+    display: block;
+    content: '';
+    transform: translate(5%, 10%);
+    width: 50%;
+    height: 80%;
+    border-radius: 45%;
+    background: rgb(70, 70, 70);
+    transition: 
+        background
+        .2s
+        ease-in-out
+    ;
+}
+
+
+    /* mecha core - connectors */
+.mecha_core__connectors {
+    position: absolute;
+    clip-path: polygon(0% 0%, 90% 0, 100% 15%, 100% 85%, 90% 100%, 0 100%);
+    width: 30%;
+    height: 20%;
+    align-self: center;
+    transform: translateX(300%);
+    background: rgb(19, 19, 19);
+}
+
+.mecha_core__connectors::after {
+    display: block;
+    content: '';
+    width: 30%;
+    height: 30%;
+    transform: translate(25%, 100%);
+    background: rgb(70, 70, 70);
+}
+
+.mecha_core__connectors:first-child {
+    transform: translate(300%, -120%);
+}
+
+/* Garage cinematics - Container */
+.garage_cinematic {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    display: grid;
+    grid-template-columns: 20vw 60vw 20vw;
+    grid-template-rows: 10vh 70vh 20vh;
+}
+
+/* Components of cinematics */
+.cinematic_element {
+    grid-area: 1 / 1 / 4 / 2;
+    background: var(--walls-color);
+    clip-path: polygon(0% 100%, 100% 86%, 100% 0%, 0% 0%);
+}
+
+.cinematic_element:nth-child(2) {
+    grid-area: 1 / 3 / 4 / 4;
+    background: var(--walls-color);
+    clip-path: polygon(100% 100%, 0% 86%, 0% 0%, 100% 0%);
+    order: 3;
+}
+
+.cinematic_element:nth-child(3) {
+    /* position: relative; */ /* If something bad happen, uncomment this. */
+    grid-area: 3 / 1 / 4 / 4;
+    background: var(--floor-and-roof-color);
+    clip-path: none;
+}
+
+.cinematic_garage_door {
+    grid-area: 1 / 2 / 2 / 3;
+    background: var(--floor-and-roof-color);
+}
+
+#cinematic {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.bt_1n_simulation {
+    position: absolute;
+    z-index: 2000;
+    top: 12vh;
+    left: 25vw;
+    width: 3vw;
+    height: 10vh;
+    box-shadow: 2px 3px 7px rgb(139, 99, 62);
+    background: var(--mecha-color);
+    will-change: top, left;
+    animation: 
+        flying
+        2s
+        ease-in-out
+        infinite
+        alternate-reverse
+        paused
+    ;
+}
+
+@keyframes flying {
+    25% {
+        top: 15vh;
+        left: 27vw;
+    }
+
+    50% {
+        top: 19vh;
+        left: 35vw;
+    }
+
+    75% {
+        top: 16vh;
+        left: 50vw;
+    }
+
+    85% {
+        top: 18vh;
+        left: 70vw;
+    }
+
+    100% {
+        top: 12vh;
+        left: 25vw;
+    }
+}
+
+/* Actioned elements => */
+    /* Garage door */
+.opened_garage_door {
+    transform: rotateX(90deg);
+}
+
+.cinematic_ended {
+    filter: blur(0px)
+}
+
+    /* Lights off */
+.lights_off {
+    filter: brightness(.3);
+}
+
+    /* Charging pull disarmed */
+.charging_pull_disarmed {
+    transform: rotateX(180deg);
+}
+
+    /* Disarmer pull actioned */
+.disarmer_actioned {
+    transform: rotateZ(90deg) translate(-30%, -100%);
+}
+
+    /* Mecha parts disarmed */
+.helmet_off {
+    top: -8%;
+}
+
+.left_armor_off {
+    left: 10%;
+}
+
+.right_armor_off {
+    right: 10%;
+}
+
+.shoulder_off {
+    transform: translate(15%, -20%);
+}
+
+    /* Core in the mecha */
+.core_incorpored {
+    width: 50%;
+    height: 25%;
+    top: 25%;
+    left: 30%;
+    grid-area: none;
+}
+
+    /* Rainy mood */
+.raining {
+    filter: hue-rotate(-47deg) grayscale(.6) brightness(.75);
+}
+
+@media screen and (orientation: portrait) {
+    .device_orientation_advice {
+        display: block;
+    }
+}
+
+@media screen and (min-height: 335px) {
+    :root {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-height: 420px) {
+    :root {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-height: 465px) {
+    :root {
+        font-size: 22.5px;
+    }
+}
+
+@media screen and (min-height: 485px) {
+    .l3_17 {
+        top: 10rem;
+    }
+}
+
+@media screen and (min-height: 500px) {
+    .l3_17 {
+        top: 12.5rem;
+    }
+}
+
+@media screen and (min-height: 600px) {
+    .l3_17 {
+        top: 16rem;
+    }
+}
+
+@media screen and (min-height: 680px) {
+    :root {
+        font-size: 24px;
+    }
+
+    .l3_17 {
+        top: 17rem;
+    }
+}
+
+@media screen and (min-height: 740px) {
+    .l3_17 {
+        top: 21rem;
+    }
+}
+
+@media screen and (min-height: 790px) {
+    .l3_17 {
+        top: 24rem;
+    }
+}
+
+@media screen and (min-height: 870px) {
+    :root {
+        font-size: 25px;
+    }
+
+    .l3_17 {
+        top: 25rem;
+    }
+}
+
+@media screen and (min-height: 950px) {
+    :root {
+        font-size: 27px;
+    }
+}
+
+@media screen and (min-height: 1060px) {
+    :root {
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-height: 1180px) {
+    :root {
+        font-size: 32px;
+    }
+}
+
+@media screen and (min-height: 1255px) {
+    :root {
+        font-size: 35px;
+    }
+}
+
+@media screen and (min-height: 1320px) {
+    :root {
+        font-size: 50px;
+    }
+
+    .l3_17 {
+        top: 14rem;
+    }
+}
+
+@media screen and (min-height: 1420px) {
+    .l3_17 {
+        top: 17rem;
+    }
+}
+
+@media screen and (min-height: 1520px) {
+    .l3_17 {
+        top: 19rem;
+    }
+}
+
+@media screen and (min-height: 1630px) {
+    :root {
+        font-size: 55px;
+    }
+}
+
+@media screen and (min-height: 1770px) {
+    :root {
+        font-size: 65px;
+    }
+    
+    .l3_17 {
+        top: 16.5rem;
+    }
+}
+
+@media screen and (min-height: 2000px) {
+    :root {
+        font-size: 70px;
+    }
+}
